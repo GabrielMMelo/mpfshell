@@ -569,11 +569,7 @@ class MpFileShell(cmd.Cmd):
                 from mp.term import Term
                 self.repl = Term(self.fe.con)
 
-                if platform.system() == "Windows":
-                    self.repl.exit_character = chr(0x11)
-                else:
-                    self.repl.exit_character = chr(0x0B)
-
+                self.repl.exit_character = chr(0x0B)
                 self.repl.raw = True
                 self.repl.set_rx_encoding('UTF-8')
                 self.repl.set_tx_encoding('UTF-8')
@@ -584,10 +580,7 @@ class MpFileShell(cmd.Cmd):
             self.fe.teardown()
             self.repl.start()
 
-            if self.repl.exit_character == chr(0x11):
-                print("\n*** Exit REPL with Ctrl+Q ***")
-            else:
-                print("\n*** Exit REPL with Ctrl+] ***")
+            print("\n*** Exit REPL with Ctrl+K ***")
 
             try:
                 self.repl.join(True)
