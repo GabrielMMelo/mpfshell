@@ -572,7 +572,7 @@ class MpFileShell(cmd.Cmd):
                 if platform.system() == "Windows":
                     self.repl.exit_character = chr(0x11)
                 else:
-                    self.repl.exit_character = chr(0x1d)
+                    self.repl.exit_character = chr(0x0B)
 
                 self.repl.raw = True
                 self.repl.set_rx_encoding('UTF-8')
